@@ -1,7 +1,17 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Button, Typography, TextField, FormControl, Box, AppBar, Card, CardAction, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
+import TodoForm from './TodoForm';
+import TodoList from './TodoList';
+
 const App = () => {
+
+const [todos, setTodos] = useState([]);
+
+function addTodo (todo){
+  setTodos([todo, ...todos]);
+}
+
   return (
     <div>
       <CssBaseline />
@@ -16,11 +26,19 @@ const App = () => {
         <div>
           <Container>
             <Typography variant="h4" align="center" gutterbottom>
+              React todo tutorial
+            </Typography>
+            <TodoForm addTodo={addTodo} />
+            <TodoList todos={todos} />
+          </Container>
+
+          <Container>
+            <Typography variant="h4" align="center" gutterbottom>
               Small Wins Tracker
             </Typography>
           </Container>
 
-        <Box component="span" sx={{ m:1, border: '1px solid black' }}>
+          <Container>
             <Typography variant="h5" align="center" gutterbottom>
               What's your win today?
             </Typography>
@@ -46,8 +64,7 @@ const App = () => {
               {" "}
               Add
             </Button>
-   
-</Box>
+          </Container>
           <Container>
             <Typography variant="h4" align="left" gutterbottom>
               My Wins Today

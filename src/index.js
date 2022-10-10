@@ -3,7 +3,6 @@ https://www.youtube.com/watch?v=_W3uuxDnySQ
 https://www.youtube.com/watch?v=Xoz31I1FuiY*/
 
 import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
 import {createRoot} from "react-dom/client";
 import { ThemeProvider, createTheme } from '@mui/material';
 import App from './App';
