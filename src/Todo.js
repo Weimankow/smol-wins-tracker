@@ -4,11 +4,11 @@ import { Delete } from "@mui/icons-material";
 
 function Todo({todo}) {
   return (
-    <div style={{display:"flex"}}>
+    <div className="task-row">
       <input type="checkbox" />
       <li> {todo.task}</li>
       <Delete />
-    </ div>
+    </div>
   );
 }
 
