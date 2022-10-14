@@ -10,4 +10,8 @@ li  {
     background-color: rgb(249, 246, 229);
   }
 
-  
+  .winLayout {
+    display: flex;
+    column-gap: 20px;
+
+  }

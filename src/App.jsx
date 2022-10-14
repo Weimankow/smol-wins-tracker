@@ -1,27 +1,43 @@
-import React, {useState} from 'react';
+import React, { useState } from "react";
 import {
   Button,
   Typography,
-  TextField,
-  FormControl,
   AppBar,
   CssBaseline,
   Toolbar,
-  Card,
-  Container,
 } from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
-import './App.css';
+
+import "./App.css";
 
 const App = () => {
 
-const [todos, setTodos] = useState([]);
+  //this creates a win component
+  const [win, setWin] = useState({
+    winEntry: "Here's a sample win",
+    winTime: "11:00 PM",
+  });
 
-function addTodo (todo){
-  setTodos([todo, ...todos]);
-}
+  //this is just for testing, will remove once code is working
+  const testWin = {
+    winEntry: "Here's another sample win",
+    winTime: "11:00 PM",
+  };
+
+  //this is to create an array of wins, like a data sheet
+  const [winArray, setwinArray] = useState([{ win }, {testWin}]);
+
+  //this is to map a the array of wins into a wins list on the page
+const winList = winArray.map(win => <p key={win}>{win}</p>)
+
+//this is what is triggered on the on-click event, to add a win
+  function addWin(event) {
+    const { name, value } = event.target;
+    setWin((prevWin) => ({
+      ...prevWin,
+      [name]: value,
+    }));
+  }
 
   return (
     <div className="App">
@@ -34,14 +50,31 @@ function addTodo (todo){
       </AppBar>
 
       <main>
+        <div className="form">
+          <input
+            type="text"
+            placeholder="What is your win today?"
+            className="win-input"
+            name="winEntry"
+            onChange={addWin}
+          />
+          <div>
+            <Button color="primary" variant="contained" align="right">
+              {" "}
+              Add
+            </Button>
+          </div>
+        </div>
+
+        <div className="winLayout">
+          {" "}
+          <div>{winList}</div>
+        </div>
+      </main>
+      {/* 
+      <main>
         <div>
-          <Container>
-            <Typography variant="h4" align="center" gutterbottom>
-              React todo tutorial
-            </Typography>
-            <TodoForm addTodo={addTodo} />
-            <TodoList todos={todos} />
-          </Container>
+    
 
           <Container>
             <Typography variant="h4" align="center" gutterbottom>
@@ -61,10 +94,7 @@ function addTodo (todo){
             </FormControl>
 
  
-            <Button color="primary" variant="contained" align="right">
-              {" "}
-              Add
-            </Button>
+         
           </Card>
 
           <Typography variant="h4" align="left" gutterbottom>
@@ -74,9 +104,9 @@ function addTodo (todo){
             Small Win 1
           </Typography>
         </div>
-      </main>
+      </main> */}
     </div>
   );
-}
+};
 
 export default App;
