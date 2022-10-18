@@ -1,27 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Typography, AppBar, Toolbar, CssBaseline, Container } from "@mui/material";
+import React, { useState } from "react";
+import {
+  Typography,
+  AppBar,
+  Toolbar,
+  CssBaseline,
+  Container,
+} from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
 import TodoForm from "./winForm";
 import TodoList from "./winList";
 import "./App.css";
 
-const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
 
-useEffect(() => {
-  const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-if (storageTodos) {
-  setTodos(storageTodos);
-}
 
-},[]);
-
-useEffect(()=> {
-localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-}, [todos]);
-
+  function removeTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
 
   function addTodo(todo) {
     setTodos([todo, ...todos]);
@@ -49,7 +46,8 @@ localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
               Small Wins Tracker
             </Typography>
             <TodoForm addTodo={addTodo} />
-            <TodoList todos={todos} />
+            <TodoList todos={todos}
+            removeTodo = {removeTodo} />
           </Container>
           {/* 
           <Container>
