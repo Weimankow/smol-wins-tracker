@@ -1,17 +1,20 @@
-li  {
-   list-style-type: none
-  }
-.task-row {
- display: flex;
- color: green
-  }
+li {
+  list-style-type: none;
+}
 
-  .App {
-    background-color: rgb(249, 246, 229);
-  }
+.App {
+  background-color: rgb(249, 246, 229);
+}
 
-  .winLayout {
-    display: flex;
-    column-gap: 20px;
+.winLayout {
+  display: flex;
+  column-gap: 20px;
+}
 
-  }
+.header {
+  padding: 20px 0px;
+}
+
+.FormLayout{
+  align-items: baseline;
+}

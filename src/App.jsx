@@ -1,46 +1,34 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Typography,
-  AppBar,
-  CssBaseline,
-  Toolbar,
-} from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Typography, AppBar, Toolbar, CssBaseline, Container } from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
-
+import TodoForm from "./winForm";
+import TodoList from "./winList";
 import "./App.css";
 
+const LOCAL_STORAGE_KEY = "react-todo-list-todos";
+
 const App = () => {
+  const [todos, setTodos] = useState([]);
 
-  //this creates a win component
-  const [win, setWin] = useState({
-    winEntry: "Here's a sample win",
-    winTime: "11:00 PM",
-  });
+useEffect(() => {
+  const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+if (storageTodos) {
+  setTodos(storageTodos);
+}
 
-  //this is just for testing, will remove once code is working
-  const testWin = {
-    winEntry: "Here's another sample win",
-    winTime: "11:00 PM",
-  };
+},[]);
 
-  //this is to create an array of wins, like a data sheet
-  const [winArray, setwinArray] = useState([{ win }, {testWin}]);
+useEffect(()=> {
+localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+}, [todos]);
 
-  //this is to map a the array of wins into a wins list on the page
-const winList = winArray.map(win => <p key={win}>{win}</p>)
 
-//this is what is triggered on the on-click event, to add a win
-  function addWin(event) {
-    const { name, value } = event.target;
-    setWin((prevWin) => ({
-      ...prevWin,
-      [name]: value,
-    }));
+  function addTodo(todo) {
+    setTodos([todo, ...todos]);
   }
 
   return (
-    <div className="App">
+    <div>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
@@ -50,61 +38,63 @@ const winList = winArray.map(win => <p key={win}>{win}</p>)
       </AppBar>
 
       <main>
-        <div className="form">
-          <input
-            type="text"
-            placeholder="What is your win today?"
-            className="win-input"
-            name="winEntry"
-            onChange={addWin}
-          />
-          <div>
-            <Button color="primary" variant="contained" align="right">
-              {" "}
-              Add
-            </Button>
-          </div>
-        </div>
-
-        <div className="winLayout">
-          {" "}
-          <div>{winList}</div>
-        </div>
-      </main>
-      {/* 
-      <main>
         <div>
-    
-
+          <Container>
+            <Typography
+              variant="h4"
+              align="left"
+              gutterbottom
+              className="header"
+            >
+              Small Wins Tracker
+            </Typography>
+            <TodoForm addTodo={addTodo} />
+            <TodoList todos={todos} />
+          </Container>
+          {/* 
           <Container>
             <Typography variant="h4" align="center" gutterbottom>
               Small Wins Tracker
             </Typography>
           </Container>
-          <Card>
+
+          <Container>
             <Typography variant="h5" align="center" gutterbottom>
               What's your win today?
             </Typography>
             <FormControl fullWidth sx={{ m: 1 }}>
               <TextField
                 id="outlined-basic"
-                label="What did you do today?"
+                label="Outlined"
                 variant="outlined"
               />
             </FormControl>
 
- 
-         
-          </Card>
-
-          <Typography variant="h4" align="left" gutterbottom>
-            My Wins Today
-          </Typography>
-          <Typography variant="body" align="left" paragraph>
-            Small Win 1
-          </Typography>
+            <Typography variant="h5" align="center" gutterbottom>
+              Which identity did it strengthen?
+            </Typography>
+            <FormControl fullWidth sx={{ m: 1 }}>
+              <TextField
+                id="outlined-basic"
+                label="Outlined"
+                variant="outlined"
+              />
+            </FormControl>
+            <Button color="primary" variant="contained" align="right">
+              {" "}
+              Add
+            </Button>
+          </Container>
+          <Container>
+            <Typography variant="h4" align="left" gutterbottom>
+              My Wins Today
+            </Typography>
+            <Typography variant="body" align="left" paragraph>
+              Small Win 1
+            </Typography>
+          </Container> */}
         </div>
-      </main> */}
+      </main>
     </div>
   );
 };
