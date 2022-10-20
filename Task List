@@ -1,6 +1,6 @@
 Next Steps
 
-1. change all todos to wins in code
+<!-- 1. change all todos to wins in code -->
 2. Map winLog local storage to show the list of wins saved in the local storage
 3. change the map into objects to that it can also show timestamp
 <!-- 4. Format the timestamp, win, and delete button

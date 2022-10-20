@@ -5,6 +5,7 @@ import {
   Toolbar,
   CssBaseline,
   Container,
+  GlobalStyles,
 } from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
 import WinsForm from "./winForm";
@@ -29,6 +30,9 @@ const App = () => {
   return (
     <div>
       <CssBaseline />
+      <GlobalStyles
+        styles={{ body: { backgroundColor: "rgb(249, 246, 229)" } }}
+      />
       <AppBar position="relative">
         <Toolbar>
           <EmojiEvents />
@@ -39,15 +43,22 @@ const App = () => {
       <main>
         <div>
           <Container>
-            <Typography
-              variant="h4"
-              align="left"
-              gutterbottom
-              className="header"
-            >
-              Small Wins Tracker
-            </Typography>
+            <Container disablegutters sx={{ mb: 3, ml: 0, pl: 0 }}>
+              <Typography
+                variant="h4"
+                align="left"
+                gutterbottom
+                className="header"
+              >
+                Small Wins Tracker
+              </Typography>
+              <Typography variant="body" align="left" gutterbottom>
+                Remind yourself how much you've done by tracking your
+                small wins throughout the day.
+              </Typography>
+            </Container>
             <WinsForm addWin={addWin} />
+
             <Typography
               variant="h5"
               align="left"
@@ -81,19 +92,7 @@ const App = () => {
                 variant="outlined"
               />
             </FormControl>
-            <Button color="primary" variant="contained" align="right">
-              {" "}
-              Add
-            </Button>
-          </Container>
-          <Container>
-            <Typography variant="h4" align="left" gutterbottom>
-              My Wins Today
-            </Typography>
-            <Typography variant="body" align="left" paragraph>
-              Small Win 1
-            </Typography>
-          </Container> */}
+ */}
         </div>
       </main>
     </div>
