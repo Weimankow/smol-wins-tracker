@@ -2,19 +2,18 @@ import React from "react";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 import { WinLayout } from "./winLayout";
 
-function TodoList({ todos, removeTodo }) {
+function WinList({ winList, deleteWin }) {
   const [winLog, setWinLog] = useLocalStorage("winLog", []);
   console.log(winLog);
   return (
     <>
-  {/*   <p>{winLog}</p> */}
       <ul style={{ padding: 0 }}>
-        {todos.map((todo) => (
-          <WinLayout key={todo.id} todo={todo} removeTodo={removeTodo} />
+        {winList.map((win) => (
+          <WinLayout key={win.id} win={win} deleteWin={deleteWin} />
         ))}
       </ul>
     </>
   );
 }
 
-export default TodoList;
+export default WinList;

@@ -7,23 +7,23 @@ import {
   Container,
 } from "@mui/material";
 import { EmojiEvents } from "@mui/icons-material";
-import TodoForm from "./winForm";
-import TodoList from "./winList";
+import WinsForm from "./winForm";
+import WinList from "./winList";
 import "./App.css";
 
 
 const App = () => {
-  const [todos, setTodos] = useState([]);
+  const [winList, setWinList] = useState([]);
 
 
 
 
-  function removeTodo(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
+  function deleteWin(id) {
+    setWinList(winList.filter((win) => win.id !== id));
   }
 
-  function addTodo(todo) {
-    setTodos([todo, ...todos]);
+  function addWin(win) {
+    setWinList([win, ...winList]);
   }
 
   return (
@@ -47,7 +47,7 @@ const App = () => {
             >
               Small Wins Tracker
             </Typography>
-            <TodoForm addTodo={addTodo} />
+            <WinsForm addWin={addWin} />
             <Typography
               variant="h5"
               align="left"
@@ -62,28 +62,15 @@ const App = () => {
               sx={0}
               disableGutters={true}
             >
-              <TodoList todos={todos} removeTodo={removeTodo} />
+              <WinList winList={winList} deleteWin={deleteWin} />
             </Container>
           </Container>
           {/* 
-          <Container>
-            <Typography variant="h4" align="center" gutterbottom>
-              Small Wins Tracker
-            </Typography>
-          </Container>
 
           <Container>
             <Typography variant="h5" align="center" gutterbottom>
               What's your win today?
             </Typography>
-            <FormControl fullWidth sx={{ m: 1 }}>
-              <TextField
-                id="outlined-basic"
-                label="Outlined"
-                variant="outlined"
-              />
-            </FormControl>
-
             <Typography variant="h5" align="center" gutterbottom>
               Which identity did it strengthen?
             </Typography>

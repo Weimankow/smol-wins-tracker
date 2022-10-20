@@ -7,10 +7,10 @@ import { useLocalStorage } from "./hooks/useLocalStorage";
 
 
 
-function TodoForm({ addTodo }) {
+function WinsForm({ addWin }) {
   const [winLog, setWinLog] = useLocalStorage("winLog", []);
 
-  const [todo, setTodo] = useState({
+  const [win, setTodo] = useState({
     id: "",
     task: "",
     time: "",
@@ -24,9 +24,9 @@ function TodoForm({ addTodo }) {
       }
     }, []);
 
-  //this updates the task property in the todo object
+  //this updates the task property in the win object
   function handleTaskInputChange(e) {
-    setTodo({ ...todo, task: e.target.value, time: timestamp });
+    setTodo({ ...win, task: e.target.value, time: timestamp });
   }
 
   /*  const date = new Date();
@@ -45,12 +45,12 @@ const timestamp = `${date.getHours()}:${date.getMinutes()}`;
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (todo.task.trim()) {
-      addTodo({ ...todo, id: uuid() });
+    if (win.task.trim()) {
+      addWin({ ...win, id: uuid() });
       //reset task input
-      setTodo({ ...todo, task: "", time: timestamp });
+      setTodo({ ...win, task: "", time: timestamp });
       console.log(timestamp);
-      setWinLog([...winLog, todo.task]);
+      setWinLog([...winLog, win.task]);
     }
   }
   return (
@@ -58,7 +58,7 @@ const timestamp = `${date.getHours()}:${date.getMinutes()}`;
       {/*   <input
         name="task"
         type="text"
-        value={todo.task}
+        value={win.task}
         onChange={handleTaskInputChange}
       />
       <button> Add Win</button> */}
@@ -70,7 +70,7 @@ const timestamp = `${date.getHours()}:${date.getMinutes()}`;
           variant="outlined"
           name="task"
           type="text"
-          value={todo.task}
+          value={win.task}
           onChange={handleTaskInputChange}
         />
       </FormControl>
@@ -82,4 +82,4 @@ const timestamp = `${date.getHours()}:${date.getMinutes()}`;
   );
 }
 
-export default TodoForm;
+export default WinsForm;
