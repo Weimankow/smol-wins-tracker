@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Typography,
   AppBar,
@@ -14,6 +14,8 @@ import "./App.css";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+
+
 
 
   function removeTodo(id) {
@@ -46,8 +48,22 @@ const App = () => {
               Small Wins Tracker
             </Typography>
             <TodoForm addTodo={addTodo} />
-            <TodoList todos={todos}
-            removeTodo = {removeTodo} />
+            <Typography
+              variant="h5"
+              align="left"
+              gutterbottom
+              className="list-header"
+            >
+              My Wins Today
+            </Typography>
+            <Container
+              maxWidth="sm"
+              className="win-list"
+              sx={0}
+              disableGutters={true}
+            >
+              <TodoList todos={todos} removeTodo={removeTodo} />
+            </Container>
           </Container>
           {/* 
           <Container>

@@ -1,0 +1,15 @@
+Next Steps
+
+1. change all todos to wins in code
+2. Map winLog local storage to show the list of wins saved in the local storage
+3. change the map into objects to that it can also show timestamp
+4. Format the timestamp, win, and delete button
+5. Format the add button and text input so that it is center aligned a the very least
+
+-------
+Nice to haves
+--------
+6. Put winLayout into a card?
+7. Give delete button a on-hover effect to change from unfilled to filled, and change color?
+8. Add animation so that the card disappears slowly or moves out slowly
+9. Add my 4 chips or Radio Group for 'action, observation, feedback, and experience (felt)'

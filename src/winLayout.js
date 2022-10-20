@@ -2,19 +2,23 @@ import React from 'react'
 import { Delete } from "@mui/icons-material";
 
 
-function winLayout({todo, removeTodo}) {
+export function WinLayout({todo, removeTodo}) {
 
 function handleRemoveClick(){
   removeTodo(todo.id);
 }
 
   return (
-    <div style={{display:"flex"}}>
-      <li> {todo.task}</li>
-      <Delete onClick={handleRemoveClick}/>
-    </ div>
+    <>
+      <div className="winLayout">
+        <div className="time-task">
+          <p>{todo.time} </p>
+          <p> {todo.task}</p>
+        </div>
+        <Delete onClick={handleRemoveClick} />
+      </div>
+      <hr />
+    </>
   );
 }
 
-
-export default winLayout;
