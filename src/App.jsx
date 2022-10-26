@@ -16,7 +16,7 @@ import "./App.css";
 const App = () => {
   const [winList, setWinList] = useState([]);
 
-
+// no need for so many empty lines
 
 
   function deleteWin(id) {
@@ -30,6 +30,7 @@ const App = () => {
   return (
     <div>
       <CssBaseline />
+      {/* I think no need to use GlobalStyles if you are using theming as well, unless there is a reason for it? */}
       <GlobalStyles
         styles={{ body: { backgroundColor: "rgb(249, 246, 229)" } }}
       />
@@ -77,6 +78,8 @@ const App = () => {
             </Container>
           </Container>
           {/* 
+
+            If we comment out our code like so, we might as well just remove it
 
           <Container>
             <Typography variant="h5" align="center" gutterbottom>

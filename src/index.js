@@ -7,6 +7,7 @@ import {createRoot} from "react-dom/client";
 import { ThemeProvider, createTheme } from '@mui/material';
 import App from './App';
 
+// nice use of theming
 const theme = createTheme({
   palette: {
     primary:{
