@@ -2,7 +2,7 @@ li {
   list-style-type: none;
 }
 
-
+/* No need for so many empty lines */
 
 .winLayout {
   display: flex;

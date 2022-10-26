@@ -4,7 +4,7 @@ import { Button, FormControl, Card, CardContent, TextField } from "@mui/material
 
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
-
+// no need for so many empty lines
 
 
 function WinsForm({ addWin }) {
@@ -17,6 +17,7 @@ function WinsForm({ addWin }) {
     completed: false,
   });
 
+  // I don't think this is necessary, as winLog in line 11 should already contain the localStorage value?
     useEffect(() => {
       const winLog = JSON.parse(localStorage.getItem("winLog"));
       if (winLog) {
@@ -37,6 +38,7 @@ Problem: this shows 9:2 instead of 9:02
 /*   const date = new Date();
   const timestamp = date.toTimeString(); */
 
+  // another way to handle date is using moment.js or date-fns. I think this would make it easier for you to choose between the different ways of handling dates. Usually moment.js is standard practice.
   const timestamp = new Date().toLocaleDateString('en-GB', {
       hour: 'numeric',
       minute: 'numeric',
@@ -50,6 +52,7 @@ Problem: this shows 9:2 instead of 9:02
       addWin({ ...win, id: uuid() });
       //reset task input
       setTodo({ ...win, task: "", time: timestamp });
+      // ideally we remove console.logs from "production" code
       console.log(timestamp);
       setWinLog([...winLog, win.task]);
     }
